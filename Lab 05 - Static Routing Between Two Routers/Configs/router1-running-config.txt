@@ -1,0 +1,117 @@
+## Router0 config.txt
+Router0>en
+Router0#show run
+Building configuration...
+
+Current configuration : 675 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Router0
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ ip address 192.168.0.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1
+ ip address 10.10.10.1 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/2
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+Router0#show ip ro
+Router0#show ip route 
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+     10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+C       10.10.10.0/30 is directly connected, GigabitEthernet0/0/1
+L       10.10.10.1/32 is directly connected, GigabitEthernet0/0/1
+     192.168.0.0/24 is variably subnetted, 2 subnets, 2 masks
+C       192.168.0.0/24 is directly connected, GigabitEthernet0/0/0
+L       192.168.0.1/32 is directly connected, GigabitEthernet0/0/0
+
+Router0#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router0(config)#ip route 192.168.100.0 255.255.255.0 10.10.10.2
+
+Router0(config)#exit
+Router0#show ip route 
+10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+C        10.10.10.0/30 is directly connected, GigabitEthernet0/0/1
+L        10.10.10.1/32 is directly connected, GigabitEthernet0/0/1
+      192.168.0.0/24 is variably subnetted, 2 subnets, 2 masks
+C        192.168.0.0/24 is directly connected, GigabitEthernet0/0/0
+L        192.168.0.1/32 is directly connected, GigabitEthernet0/0/0
+S     192.168.100.0/24 [1/0] via 10.10.10.2
