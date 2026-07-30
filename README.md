@@ -10,8 +10,8 @@ Building toward **CCNA**. Platform is Cisco Packet Tracer plus a physical home l
 
 | # | Lab | Focus | Key concepts | Status |
 |---|-----|-------|--------------|--------|
-| 05 | [Static Routing Between Two Routers]([./Lab-05-Static---Routing-Between-Two-Routers/](https://github.com/Arch-AMichael/Networking-Projects/tree/main/Lab%2005%20-%20Static%20Routing%20Between%20Two%20Routers)) | Point-to-point static routing | Next-hop = far end of link, return-path symmetry, `/30` WAN sizing, TTL as path evidence | ✅ Complete |
-| 06 | [Static Route Summarization (Four-Router Chain)]([./06-static-route-summarization/](https://github.com/Arch-AMichael/Networking-Projects/tree/main/Lab%2005%20-%20Static%20Routing%20Between%20Two%20Routers)) | Multi-hop static routing + summarization | Route aggregation, longest-prefix match, `ping` result chars (`!` `.` `U`), summary trade-offs | ✅ Complete |
+| 05 | [Static Routing Between Two Routers](https://github.com/Arch-AMichael/Networking-Projects/tree/main/Lab%2005%20-%20Static%20Routing%20Between%20Two%20Routers) | Point-to-point static routing | Next-hop = far end of link, return-path symmetry, `/30` WAN sizing, TTL as path evidence | ✅ Complete |
+| 06 | [Static Route Summarization (Four-Router Chain)](https://github.com/Arch-AMichael/Networking-Projects/tree/main/Lab%2005%20-%20Static%20Routing%20Between%20Two%20Routers) | Multi-hop static routing + summarization | Route aggregation, longest-prefix match, `ping` result chars (`!` `.` `U`), summary trade-offs | ✅ Complete |
 
 ---
 
