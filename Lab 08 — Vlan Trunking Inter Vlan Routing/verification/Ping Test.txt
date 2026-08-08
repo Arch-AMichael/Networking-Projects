@@ -1,0 +1,129 @@
+## From PC5
+
+C:\>ping 10.0.0.1
+
+Pinging 10.0.0.1 with 32 bytes of data:
+
+Reply from 10.0.0.1: bytes=32 time<1ms TTL=128
+Reply from 10.0.0.1: bytes=32 time=3ms TTL=128
+Reply from 10.0.0.1: bytes=32 time<1ms TTL=128
+Reply from 10.0.0.1: bytes=32 time<1ms TTL=128
+
+Ping statistics for 10.0.0.1:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 3ms, Average = 0ms
+
+C:\>ping 10.0.0.2
+
+Pinging 10.0.0.2 with 32 bytes of data:
+
+Reply from 10.0.0.2: bytes=32 time<1ms TTL=128
+Reply from 10.0.0.2: bytes=32 time<1ms TTL=128
+Reply from 10.0.0.2: bytes=32 time<1ms TTL=128
+Reply from 10.0.0.2: bytes=32 time=6ms TTL=128
+
+Ping statistics for 10.0.0.2:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 6ms, Average = 1ms
+
+C:\>ping 10.0.0.65
+
+Pinging 10.0.0.65 with 32 bytes of data:
+
+Reply from 10.0.0.65: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.65: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.65: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.65: bytes=32 time<1ms TTL=127
+
+Ping statistics for 10.0.0.65:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+
+C:\>ping 10.0.0.66
+
+Pinging 10.0.0.66 with 32 bytes of data:
+
+Reply from 10.0.0.66: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.66: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.66: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.66: bytes=32 time<1ms TTL=127
+
+Ping statistics for 10.0.0.66:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+
+C:\>ping 10.0.0.130
+
+Pinging 10.0.0.130 with 32 bytes of data:
+
+Reply from 10.0.0.130: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.130: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.130: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.130: bytes=32 time<1ms TTL=127
+
+Ping statistics for 10.0.0.130:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+
+C:\>ping 10.0.0.129
+
+Pinging 10.0.0.129 with 32 bytes of data:
+
+Request timed out.
+Reply from 10.0.0.129: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.129: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.129: bytes=32 time<1ms TTL=127
+
+Ping statistics for 10.0.0.129:
+    Packets: Sent = 4, Received = 3, Lost = 1 (25% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+
+C:\>ping 10.0.0.193
+
+Pinging 10.0.0.193 with 32 bytes of data:
+
+Reply from 10.0.0.193: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.193: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.193: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.193: bytes=32 time=1ms TTL=127
+
+Ping statistics for 10.0.0.193:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 1ms, Average = 0ms
+
+C:\>ping 10.0.0.194
+
+Pinging 10.0.0.194 with 32 bytes of data:
+
+Reply from 10.0.0.194: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.194: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.194: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.194: bytes=32 time<1ms TTL=127
+
+Ping statistics for 10.0.0.194:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+
+C:\>C:\>ping 10.0.0.4
+
+Pinging 10.0.0.4 with 32 bytes of data:
+
+Reply from 10.0.0.4: bytes=32 time<1ms TTL=128
+Reply from 10.0.0.4: bytes=32 time<1ms TTL=128
+Reply from 10.0.0.4: bytes=32 time<1ms TTL=128
+Reply from 10.0.0.4: bytes=32 time<1ms TTL=128
+
+Ping statistics for 10.0.0.4:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+
+C:\>

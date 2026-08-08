@@ -1,0 +1,273 @@
+## Use <show ip int brief> command to view interface status and name  or <show interfaces status> to view info on connectino type and speed
+
+## Vlan 10
+SW1(config-if)#int f3/1
+SW1(config-if)#des
+SW1(config-if)#description connected to pc1
+SW1(config-if)#int f4/1
+SW1(config-if)#des
+SW1(config-if)#description connected to pc2
+SW1(config-if)#int range f3/1, f4/1
+SW1(config-if-range)#vlan?
+% Unrecognized command
+SW1(config-if-range)#switchport mode a
+SW1(config-if-range)#switchport mode access 
+SW1(config-if-range)#switchport access vlan10 
+                                           ^
+% Invalid input detected at '^' marker.
+	
+SW1(config-if-range)#switchport access vlan 10 
+% Access VLAN does not exist. Creating vlan 10
+SW1(config-if-range)#name Engineering
+                      ^
+
+## Vlan 20
+	
+SW1(config-if-range)#
+SW1(config-if-range)#int f5/1
+SW1(config-if)#des
+SW1(config-if)#description connected to pc3
+SW1(config-if)#int f6/1
+SW1(config-if)#description connected to pc4
+SW1(config-if)#int range f5/1, f6/1
+SW1(config-if-range)#switchport mode access
+SW1(config-if-range)#switchport access vlan 20
+% Access VLAN does not exist. Creating vlan 20
+
+
+## Vlan 30
+SW1(config-if-range)#int f7/1
+SW1(config-if)#description connected to pc5
+SW1(config-if)#int f8/1
+SW1(config-if)#description connected to pc6
+SW1(config-if)#int range f7/1, f8/1
+SW1(config-if-range)#switchport mode access
+SW1(config-if-range)#switchport access vlan 30
+% Access VLAN does not exist. Creating vlan 30
+
+SW1(config-if-range)#end
+SW1#
+%SYS-5-CONFIG_I: Configured from console by console
+
+SW1#show vlan
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Gig0/1, Gig1/1, Gig2/1, Fa9/1
+10   VLAN0010                         active    Fa3/1, Fa4/1
+20   VLAN0020                         active    Fa5/1, Fa6/1
+30   VLAN0030                         active    Fa7/1, Fa8/1
+1002 fddi-default                     active    
+1003 token-ring-default               active    
+1004 fddinet-default                  active    
+1005 trnet-default                    active    
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+1    enet  100001     1500  -      -      -        -    -        0      0
+10   enet  100010     1500  -      -      -        -    -        0      0
+20   enet  100020     1500  -      -      -        -    -        0      0
+30   enet  100030     1500  -      -      -        -    -        0      0
+1002 fddi  101002     1500  -      -      -        -    -        0      0   
+1003 tr    101003     1500  -      -      -        -    -        0      0   
+1004 fdnet 101004     1500  -      -      -        ieee -        0      0   
+1005 trnet 101005     1500  -      -      -        ibm  -        0      0   
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+
+Remote SPAN VLANs
+------------------------------------------------------------------------------
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+SW1#
+
+
+
+## Change Names
+SW1#vlan 10
+         ^
+% Invalid input detected at '^' marker.
+	
+SW1#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SW1(config)#vlan 10
+SW1(config-vlan)#name Engineering
+SW1(config-vlan)#vlan 20
+SW1(config-vlan)#name 
+SW1(config-vlan)#name HR
+SW1(config-vlan)#vlan 30
+SW1(config-vlan)#name Sales
+SW1(config-vlan)#end
+SW1#
+%SYS-5-CONFIG_I: Configured from console by console
+
+SW1#show vlan
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Gig0/1, Gig1/1, Gig2/1, Fa9/1
+10   Engineering                      active    Fa3/1, Fa4/1
+20   HR                               active    Fa5/1, Fa6/1
+30   Sales                            active    Fa7/1, Fa8/1
+1002 fddi-default                     active    
+1003 token-ring-default               active    
+1004 fddinet-default                  active    
+1005 trnet-default                    active    
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+1    enet  100001     1500  -      -      -        -    -        0      0
+10   enet  100010     1500  -      -      -        -    -        0      0
+20   enet  100020     1500  -      -      -        -    -        0      0
+30   enet  100030     1500  -      -      -        -    -        0      0
+1002 fddi  101002     1500  -      -      -        -    -        0      0   
+1003 tr    101003     1500  -      -      -        -    -        0      0   
+1004 fdnet 101004     1500  -      -      -        ieee -        0      0   
+1005 trnet 101005     1500  -      -      -        ibm  -        0      0   
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+
+Remote SPAN VLANs
+------------------------------------------------------------------------------
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+
+
+## Assign R1 interfaces to a Vlan 
+SW1#
+SW1#en
+SW1#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SW1(config)#int g0/1
+SW1(config-if)#switc
+SW1(config-if)#switchport mode ac
+SW1(config-if)#switchport mode access 
+SW1(config-if)#switchport access vlan10 
+                                     ^
+% Invalid input detected at '^' marker.
+	
+SW1(config-if)#switchport access vlan 10 
+SW1(config-if)#int g1/1
+SW1(config-if)#switchport mode access 
+SW1(config-if)#switchport access vlan 20
+SW1(config-if)#int g2/1
+SW1(config-if)#switchport mode access 
+SW1(config-if)#switchport access vlan 30
+SW1(config-if)#
+SW1(config-if)#exit
+SW1(config)#exit
+SW1#
+%SYS-5-CONFIG_I: Configured from console by console
+
+SW1#show vlan brief
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa9/1
+10   Engineering                      active    Gig0/1, Fa3/1, Fa4/1
+20   HR                               active    Gig1/1, Fa5/1, Fa6/1
+30   Sales                            active    Gig2/1, Fa7/1, Fa8/1
+1002 fddi-default                     active    
+1003 token-ring-default               active    
+1004 fddinet-default                  active    
+1005 trnet-default                    active    
+SW1#
+
+## Configuring Trunk fom switch to switch and switch to router
+SW1(config)# int g1/1
+SW1(config-if)#swi
+SW1(config-if)#switchport mode trunk
+
+SW1(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/1, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1/1, changed state to up
+
+SW1(config-if)#switchport trunk allowed vlan 10,40
+SW1(config-if)#do show trunk
+show trunk
+      ^
+% Invalid input detected at '^' marker.
+	
+SW1(config-if)#do show int trunk
+Port        Mode         Encapsulation  Status        Native vlan
+Gig1/1      on           802.1q         trunking      1
+
+Port        Vlans allowed on trunk
+Gig1/1      10,40
+
+Port        Vlans allowed and active in management domain
+Gig1/1      10
+
+Port        Vlans in spanning tree forwarding state and not pruned
+Gig1/1      none
+
+SW1(config-if)# int g0/1
+SW1(config-if)#switchport mode trunk
+
+SW1(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up
+
+SW1(config-if)#switchport trunk allowed vlan 10,20,30,40
+SW1(config-if)#do show int trunk
+Port        Mode         Encapsulation  Status        Native vlan
+Gig0/1      on           802.1q         trunking      1
+Gig1/1      on           802.1q         trunking      1
+
+Port        Vlans allowed on trunk
+Gig0/1      10,20,30,40
+Gig1/1      10,40
+
+Port        Vlans allowed and active in management domain
+Gig0/1      10,20,30
+Gig1/1      10
+
+Port        Vlans in spanning tree forwarding state and not pruned
+Gig0/1      none
+Gig1/1      10
+
+SW1(config-if)#
+
+
+
+## Enabling VLAN 40 on switch 1
+SW1#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SW1(config)#vlan 40
+SW1(config-vlan)#exit
+SW1(config)#
+SW1(config)#exit
+SW1#
+%SYS-5-CONFIG_I: Configured from console by console
+
+SW1#show int trunk
+Port        Mode         Encapsulation  Status        Native vlan
+Gig0/1      on           802.1q         trunking      1
+Gig1/1      on           802.1q         trunking      1
+
+Port        Vlans allowed on trunk
+Gig0/1      10,20,30,40
+Gig1/1      10,40
+
+Port        Vlans allowed and active in management domain
+Gig0/1      10,20,30,40
+Gig1/1      10,40
+
+Port        Vlans in spanning tree forwarding state and not pruned
+Gig0/1      10,20,30
+Gig1/1      10
+
+## Switch native vlan
+SW1>en
+SW1#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SW1(config)#int range g0/1, g1/1
+SW1(config-if-range)#swi
+SW1(config-if-range)#switchport trunk native vlan 1001
+SW1(config-if-range)#

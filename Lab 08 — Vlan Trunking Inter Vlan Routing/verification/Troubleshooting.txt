@@ -1,0 +1,190 @@
+Troubleshooting
+Vlan 40: Marketing
+Problem: Unable to ping Vlan 40:Marketing 10.0.0.192/26 network from any device and vise versa
+Test: 
+Tracert to other PC IP address from PC9: No Information
+Ping from other PC to 10.0.0.192/26 network and monitor via packet tracer simulation. 
+Real cause: Vlan 40 was not yet created in SW1
+Solution & Result: Created Vlan 40 in SW1 and was able ping to Vlan 40:Marketing 10.0.0.192/26 network and vise versa
+
+
+##Troubleshooting Commands
+
+# From PC1 (VLAN10)
+C:\>ping 10.0.0.193
+
+Pinging 10.0.0.193 with 32 bytes of data:
+
+Request timed out.
+Request timed out.
+Request timed out.
+Request timed out.
+
+Ping statistics for 10.0.0.193:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+
+## From PC10 (VLAN40)
+C:\>ping 10.0.0.3
+
+Pinging 10.0.0.3 with 32 bytes of data:
+
+Request timed out.
+Request timed out.
+Request timed out.
+Request timed out.
+
+Ping statistics for 10.0.0.3:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+
+C:\>ping 10.0.0.66
+
+Pinging 10.0.0.66 with 32 bytes of data:
+
+Request timed out.
+Request timed out.
+Request timed out.
+Request timed out.
+
+Ping statistics for 10.0.0.66:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+
+C:\>ping 10.0.0.3
+
+Pinging 10.0.0.3 with 32 bytes of data:
+
+Request timed out.
+Request timed out.
+Request timed out.
+Request timed out.
+
+Ping statistics for 10.0.0.3:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+
+C:\>ping 10.0.0.1
+
+Pinging 10.0.0.1 with 32 bytes of data:
+
+Request timed out.
+Request timed out.
+Request timed out.
+Request timed out.
+
+Ping statistics for 10.0.0.1:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+
+C:\>tracert 10.0.0.1
+
+Tracing route to 10.0.0.1 over a maximum of 30 hops: 
+
+  1   *         *         *         Request timed out.
+  2   *         *         *         Request timed out.
+  3   *         *         *         Request timed out.
+  4   *         *         *         Request timed out.
+  5   *         *         *         Request timed out.
+  6   *         *         *         Request timed out.
+  7   *         *         *         Request timed out.
+  8   *         *         *         Request timed out.
+  9   
+Control-C
+^C
+C:\>ping 10.0.0.1
+
+Pinging 10.0.0.1 with 32 bytes of data:
+
+Request timed out.
+Request timed out.
+Request timed out.
+Request timed out.
+
+Ping statistics for 10.0.0.1:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+
+C:\>ping 10.0.0.130
+
+Pinging 10.0.0.130 with 32 bytes of data:
+
+Request timed out.
+Request timed out.
+Request timed out.
+Request timed out.
+
+Ping statistics for 10.0.0.130:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+
+C:\>
+
+
+
+# After-Fix, From PC1 (VLAN 10)
+C:\>ping 10.0.0.193
+
+Pinging 10.0.0.193 with 32 bytes of data:
+
+Reply from 10.0.0.193: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.193: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.193: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.193: bytes=32 time<1ms TTL=127
+
+Ping statistics for 10.0.0.193:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+
+After-Fix, ## From PC10 (VLAN40)
+C:\>ping 10.0.0.3
+
+Pinging 10.0.0.3 with 32 bytes of data:
+
+Reply from 10.0.0.3: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.3: bytes=32 time=1ms TTL=127
+Reply from 10.0.0.3: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.3: bytes=32 time<1ms TTL=127
+
+Ping statistics for 10.0.0.3:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 1ms, Average = 0ms
+
+C:\>ping 10.0.0.66
+
+Pinging 10.0.0.66 with 32 bytes of data:
+
+Reply from 10.0.0.66: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.66: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.66: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.66: bytes=32 time<1ms TTL=127
+
+Ping statistics for 10.0.0.66:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+
+C:\>ping 10.0.0.1
+
+Pinging 10.0.0.1 with 32 bytes of data:
+
+Reply from 10.0.0.1: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.1: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.1: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.1: bytes=32 time<1ms TTL=127
+
+Ping statistics for 10.0.0.1:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+
+C:\>ping 10.0.0.130
+
+Pinging 10.0.0.130 with 32 bytes of data:
+
+Reply from 10.0.0.130: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.130: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.130: bytes=32 time<1ms TTL=127
+Reply from 10.0.0.130: bytes=32 time=1ms TTL=127
+
+Ping statistics for 10.0.0.130:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 1ms, Average = 0ms
+
+C:\>
