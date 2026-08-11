@@ -7,11 +7,12 @@ Building toward **CCNA**. Platform is Cisco Packet Tracer plus a physical home l
 ---
 
 ## Labs
-
 | # | Lab | Focus | Key concepts | Status |
 |---|-----|-------|--------------|--------|
 | 05 | [Static Routing Between Two Routers](https://github.com/Arch-AMichael/Networking-Projects/tree/main/Lab%2005%20-%20Static%20Routing%20Between%20Two%20Routers) | Point-to-point static routing | Next-hop = far end of link, return-path symmetry, `/30` WAN sizing, TTL as path evidence | ✅ Complete |
 | 06 | [Static Route Summarization (Four-Router Chain)](https://github.com/Arch-AMichael/Networking-Projects/tree/main/Lab%2006%20%E2%80%94%20Static%20Route%20Summarization%20Across%20a%20Four-Router%20Chain) | Multi-hop static routing + summarization | Route aggregation, longest-prefix match, `ping` result chars (`!` `.` `U`), summary trade-offs | ✅ Complete |
+| 07 | [Dynamic Routing (OSPF)](https://github.com/Arch-AMichael/Networking-Projects/tree/main/Lab%2007%20%E2%80%94%20%20Dynamic%20Routing%20(OSPF)) | Dynamic routing with redundancy | OSPF single-area, neighbor adjacency (`FULL`), equal-cost load balancing, automatic failover, cost metric `[110/x]` | ✅ Complete |
+| 08 | [VLAN Trunking & Inter-VLAN Routing](https://github.com/Arch-AMichael/Networking-Projects/tree/main/Lab%2008%20%E2%80%94%20Vlan%20Trunking%20Inter%20Vlan%20Routing) | Layer-2 segmentation + inter-VLAN routing | VLANs, access vs. trunk ports, 802.1Q, router-on-a-stick, VLSM (`/24`→4×`/26`), TTL as routing boundary | ✅ Complete |
 
 ---
 
@@ -35,11 +36,9 @@ Every README carries a **troubleshooting log** — a table of symptom → actual
 - **A static route's next hop is always the *adjacent* interface** — the other end of a directly connected link, never an address on the local router or one several hops away. This has bitten me in two different disguises (an explicit `%Invalid next hop` error, and a silently useless route that threw no error at all).
 - **One-way ping failure usually means a missing *return* route**, not a broken forward path. Reading the ping result characters — `!` success, `.` timeout, `U` unreachable — points straight at which half is missing.
 - **Save the config.** `copy running-config startup-config` at session end, every time. Still building the reflex.
+- **reading one number to verify behavior** — TTL for router hops, ping chars for route gaps, and OSPF cost [110/x] for path length
 
 ---
 
 ## Next up
 
-- Static → OSPF conversion on the Lab 06 chain, to compare convergence and link-failure behavior against static summaries.
-- Tighter summarization (`/19` vs. the `/16` used in Lab 06) and demonstrating the loose-summary loop.
-- VLAN segmentation and inter-VLAN routing.
