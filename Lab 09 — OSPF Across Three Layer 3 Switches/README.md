@@ -40,8 +40,6 @@ Three multilayer switches in a triangle. Every VLAN is local to exactly one swit
        VLAN 60                  VLAN 40, 50
 ```
 
-**Device naming — read this before comparing to the topology image.** The Packet Tracer labels and the configured hostnames do not line up in the obvious order:
-
 | Hostname (config) | Diagram label | VLANs owned | Router ID |
 |---|---|---|---|
 | **SW1** | Multilayer Switch0 (upper left) | 10, 20, 30 | 1.1.1.1 |
