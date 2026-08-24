@@ -1,0 +1,222 @@
+## 1. Create VLAN 
+--------------------------------------
+Switch>en
+Switch#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#vlan 60
+Switch(config-vlan)#name IT/Operations
+
+## 2. Create Access Ports
+--------------------------------------
+Switch(config-vlan)#int range f0/1-5
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport access vlan 60
+Switch(config-if-range)#do show vlan
+
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/6, Fa0/7, Fa0/8, Fa0/9
+                                                Fa0/10, Fa0/11, Fa0/12, Fa0/13
+                                                Fa0/14, Fa0/15, Fa0/16, Fa0/17
+                                                Fa0/18, Fa0/19, Fa0/20, Fa0/21
+                                                Fa0/22, Fa0/23, Fa0/24, Gig0/1
+                                                Gig0/2
+60   IT/Operations                    active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                                Fa0/5
+1002 fddi-default                     active    
+1003 token-ring-default               active    
+1004 fddinet-default                  active    
+1005 trnet-default                    active    
+
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+1    enet  100001     1500  -      -      -        -    -        0      0
+60   enet  100060     1500  -      -      -        -    -        0      0
+1002 fddi  101002     1500  -      -      -        -    -        0      0   
+1003 tr    101003     1500  -      -      -        -    -        0      0   
+1004 fdnet 101004     1500  -      -      -        ieee -        0      0   
+1005 trnet 101005     1500  -      -      -        ibm  -        0      0   
+
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+
+
+Remote SPAN VLANs
+------------------------------------------------------------------------------
+
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+Switch(config-if-range)#
+Switch(config-if-range)#exit
+
+## Change HOSTNAME
+------------------------
+
+Switch(config)#hostname SW3
+SW3(config)#
+
+SW3 con0 is now available
+
+
+
+Press RETURN to get started.
+
+
+
+## 3. Assigining IP Address to VLANS
+--------------------------------------
+
+SW3>en
+SW3#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SW3(config)#int vlan 60
+SW3(config-if)#
+%LINK-5-CHANGED: Interface Vlan60, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan60, changed state to up
+
+SW3(config-if)#ip address 192.168.60.10 255.255.255.0
+SW3(config-if)#no shutdown
+SW3(config-if)#do show ip int brief
+Interface              IP-Address      OK? Method Status                Protocol 
+FastEthernet0/1        unassigned      YES unset  up                    up 
+FastEthernet0/2        unassigned      YES unset  up                    up 
+FastEthernet0/3        unassigned      YES unset  up                    up 
+FastEthernet0/4        unassigned      YES unset  up                    up 
+FastEthernet0/5        unassigned      YES unset  up                    up 
+FastEthernet0/6        unassigned      YES unset  down                  down 
+FastEthernet0/7        unassigned      YES unset  down                  down 
+FastEthernet0/8        unassigned      YES unset  down                  down 
+FastEthernet0/9        unassigned      YES unset  down                  down 
+FastEthernet0/10       unassigned      YES unset  down                  down 
+FastEthernet0/11       unassigned      YES unset  down                  down 
+FastEthernet0/12       unassigned      YES unset  down                  down 
+FastEthernet0/13       unassigned      YES unset  down                  down 
+FastEthernet0/14       unassigned      YES unset  down                  down 
+FastEthernet0/15       unassigned      YES unset  down                  down 
+FastEthernet0/16       unassigned      YES unset  down                  down 
+FastEthernet0/17       unassigned      YES unset  down                  down 
+FastEthernet0/18       unassigned      YES unset  down                  down 
+FastEthernet0/19       unassigned      YES unset  down                  down 
+FastEthernet0/20       unassigned      YES unset  down                  down 
+FastEthernet0/21       unassigned      YES unset  down                  down 
+FastEthernet0/22       unassigned      YES unset  down                  down 
+FastEthernet0/23       unassigned      YES unset  down                  down 
+FastEthernet0/24       unassigned      YES unset  down                  down 
+GigabitEthernet0/1     unassigned      YES unset  up                    up 
+GigabitEthernet0/2     unassigned      YES unset  up                    up 
+Vlan1                  unassigned      YES unset  administratively down down 
+Vlan60                 192.168.60.10   YES manual up                    up
+SW3(config-if)#do show vlan 
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/6, Fa0/7, Fa0/8, Fa0/9
+                                                Fa0/10, Fa0/11, Fa0/12, Fa0/13
+                                                Fa0/14, Fa0/15, Fa0/16, Fa0/17
+                                                Fa0/18, Fa0/19, Fa0/20, Fa0/21
+                                                Fa0/22, Fa0/23, Fa0/24, Gig0/1
+                                                Gig0/2
+60   IT/Operations                    active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                                Fa0/5
+1002 fddi-default                     active    
+1003 token-ring-default               active    
+1004 fddinet-default                  active    
+1005 trnet-default                    active    
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+1    enet  100001     1500  -      -      -        -    -        0      0
+60   enet  100060     1500  -      -      -        -    -        0      0
+1002 fddi  101002     1500  -      -      -        -    -        0      0   
+1003 tr    101003     1500  -      -      -        -    -        0      0   
+1004 fdnet 101004     1500  -      -      -        ieee -        0      0   
+1005 trnet 101005     1500  -      -      -        ibm  -        0      0   
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+
+Remote SPAN VLANs
+------------------------------------------------------------------------------
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+SW3(config-if)#
+
+## 4. Command "IP Routing"
+--------------------------------------
+SW3>rn
+Translating "rn"...domain server (255.255.255.255) % Name lookup aborted
+SW3>en
+SW3#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SW3(config)#ip routing
+SW3(config)#
+
+## 5. Set up OSPF
+-----------------------
+SW3>en
+SW3#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SW3(config)#int g0/1
+SW3(config-if)#no swi
+SW3(config-if)#no switchport 
+SW3(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up
+
+SW3(config-if)#ip ad
+SW3(config-if)#ip address 192.168.100.10 255.255.255.252
+SW3(config-if)#no shutdown
+SW3(config-if)#int g0/2
+SW3(config-if)#no switchport 
+SW3(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/2, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/2, changed state to up
+
+SW3(config-if)#ip address 192.168.100.2 255.255.255.252
+SW3(config-if)#no shutdown
+SW3(config-if)#
+
+SW3(config-if)#router ospf 10
+SW3(config-router)# router-id 3.3.3.3
+SW3(config-router)# network 192.168.60.0 0.0.0.255 area 0
+SW3(config-router)# network 192.168.100.0 0.0.0.3 area 0
+SW3(config-router)# network 192.168.100.8 0.0.0.3 area 0
+SW3(config-router)# passive-interface vlan 60
+SW3(config-router)#
+22:29:37: %OSPF-5-ADJCHG: Process 10, Nbr 1.1.1.1 on GigabitEthernet0/2 from LOADING to FULL, Loading Done
+
+22:29:37: %OSPF-5-ADJCHG: Process 10, Nbr 2.2.2.2 on GigabitEthernet0/1 from LOADING to FULL, Loading Done
+
+SW3(config-router)#
+SW3#show ip ospf neighbor 
+
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+2.2.2.2           1   FULL/DR         00:00:36    192.168.100.9   GigabitEthernet0/1
+1.1.1.1           1   FULL/DR         00:00:36    192.168.100.1   GigabitEthernet0/2
+SW3#show ip route ospf
+O    192.168.10.0 [110/2] via 192.168.100.1, 00:07:54, GigabitEthernet0/2
+O    192.168.20.0 [110/2] via 192.168.100.1, 00:07:54, GigabitEthernet0/2
+O    192.168.30.0 [110/2] via 192.168.100.1, 00:07:54, GigabitEthernet0/2
+O    192.168.40.0 [110/2] via 192.168.100.9, 00:07:54, GigabitEthernet0/1
+O    192.168.50.0 [110/2] via 192.168.100.9, 00:07:54, GigabitEthernet0/1
+     192.168.100.0/30 is subnetted, 3 subnets
+O       192.168.100.4 [110/2] via 192.168.100.1, 00:07:54, GigabitEthernet0/2
+                      [110/2] via 192.168.100.9, 00:07:54, GigabitEthernet0/1
+
+SW3#
+
+SW3>en
+SW3#copy run start
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+SW3#`

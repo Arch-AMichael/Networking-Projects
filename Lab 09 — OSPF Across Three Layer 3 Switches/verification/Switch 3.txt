@@ -1,0 +1,18 @@
+SW3(config-router)#
+SW3#show ip ospf neighbor 
+
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+2.2.2.2           1   FULL/DR         00:00:36    192.168.100.9   GigabitEthernet0/1
+1.1.1.1           1   FULL/DR         00:00:36    192.168.100.1   GigabitEthernet0/2
+SW3#show ip route ospf
+O    192.168.10.0 [110/2] via 192.168.100.1, 00:07:54, GigabitEthernet0/2
+O    192.168.20.0 [110/2] via 192.168.100.1, 00:07:54, GigabitEthernet0/2
+O    192.168.30.0 [110/2] via 192.168.100.1, 00:07:54, GigabitEthernet0/2
+O    192.168.40.0 [110/2] via 192.168.100.9, 00:07:54, GigabitEthernet0/1
+O    192.168.50.0 [110/2] via 192.168.100.9, 00:07:54, GigabitEthernet0/1
+     192.168.100.0/30 is subnetted, 3 subnets
+O       192.168.100.4 [110/2] via 192.168.100.1, 00:07:54, GigabitEthernet0/2
+                      [110/2] via 192.168.100.9, 00:07:54, GigabitEthernet0/1
+
+SW3#
