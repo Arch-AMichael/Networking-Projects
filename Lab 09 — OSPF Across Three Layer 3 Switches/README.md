@@ -48,7 +48,6 @@ Three multilayer switches in a triangle. Every VLAN is local to exactly one swit
 | **SW2** | Multilayer Switch1 (bottom) | 40, 50 | 2.2.2.2 |
 | **SW3** | Multilayer Switch2 (right) | 60 | 3.3.3.3 |
 
-This README uses the hostnames throughout. *(Fix in the .pkt: rename the devices so the diagram matches.)*
 
 ![Topology](topology.png)
 
